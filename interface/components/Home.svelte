@@ -26,6 +26,7 @@ console.log(cycles_count_promise);
 
     <p>This dao doesn't do anything fancy at all.</p>
     <p>But we have a cool animation, so there's that.</p>
+    <p>This dao controls the text on this webpage: <a href="https://axtlm-dqaaa-aaaag-qbrra-cai.raw.ic0.app">https://axtlm-dqaaa-aaaag-qbrra-cai.raw.ic0.app</a></p>
 
     <p>we have this many cycles left, btw: <br />
       {#await cycles_count_promise}

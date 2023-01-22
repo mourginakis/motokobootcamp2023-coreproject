@@ -3,7 +3,7 @@
 DAO project for Code and State's 2023 Motoko Bootcamp
 
 
-useful commands 
+useful commands
 ```bash
 npm install
 
@@ -12,12 +12,22 @@ dfx deploy
 npm run dev
 npm run show-urls
 
+
+dfx canister create --all --network ic
+
+// will also upgrade
+dfx deploy --network ic 
+
+
 ```
 
 
 Thanks to [Iri](https://twitter.com/iriasviel) for making the template for this project
 
-Canister URL: [Not On Mainnet Yet]()
+Canister URL: [https://azrge-yaaaa-aaaag-qbrqa-cai.ic0.app/](https://azrge-yaaaa-aaaag-qbrqa-cai.ic0.app/)
+
+Webpage Canister: [https://axtlm-dqaaa-aaaag-qbrra-cai.raw.ic0.app](https://axtlm-dqaaa-aaaag-qbrra-cai.raw.ic0.app)
+
 
 Only works with plug wallet.
 

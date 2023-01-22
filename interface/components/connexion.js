@@ -5,7 +5,7 @@ import { HttpAgent, Actor } from "@dfinity/agent"
 
 //TODO : Add your mainnet id whenever you have deployed on the IC
 const daoCanisterId = 
-  process.env.NODE_ENV === "development" ? "ryjl3-tyaaa-aaaaa-aaaba-cai" : "rvpd5-iqaaa-aaaaj-qazsa-cai"
+  process.env.NODE_ENV === "development" ? "ryjl3-tyaaa-aaaaa-aaaba-cai" : "a6qaq-vyaaa-aaaag-qbrqq-cai"
 
 // See https://docs.plugwallet.ooo/ for more informations
 
