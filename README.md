@@ -16,6 +16,7 @@ npm run show-urls
 dfx canister create --all --network ic
 
 // will also upgrade
+dfx generate
 dfx deploy --network ic 
 
 
@@ -30,6 +31,9 @@ Webpage Canister: [https://axtlm-dqaaa-aaaag-qbrra-cai.raw.ic0.app](https://axtl
 
 
 Only works with plug wallet.
+
+Bootcamp faucet Canister for minting tokens:
+[https://dpzjy-fyaaa-aaaah-abz7a-cai.ic0.app/](https://dpzjy-fyaaa-aaaah-abz7a-cai.ic0.app/)
 
 
 ## Common (strange) error

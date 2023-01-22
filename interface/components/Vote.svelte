@@ -72,7 +72,13 @@
 <div class="votemain">
   {#if $principal}
     <img src={mot} class="bg" alt="logo" />
-    amount of tokens you own: {#await get_tokens_owned_promise then get_tokens_owned} {get_tokens_owned} {/await}
+    amount of tokens you own: 
+    {#await get_tokens_owned_promise} 
+    loading...
+    {:then get_tokens_owned}
+    {get_tokens_owned}
+    {/await}
+    
     {#if $proposaltoVote.proposalID === "null"}
       <h1 class="slogan">Please input a proposal ID!</h1>
       <input
