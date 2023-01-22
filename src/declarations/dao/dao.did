@@ -1,0 +1,29 @@
+type StaticProposal = 
+ record {
+   alreadyVoted: vec principal;
+   body: text;
+   id: nat;
+   votesAgainst: int;
+   votesFor: int;
+ };
+service : {
+  get_all_proposals: () -> (vec record {
+                                  nat;
+                                  StaticProposal;
+                                }) query;
+  get_cycles_balance: () -> (nat) query;
+  get_proposal: (nat) -> (opt StaticProposal) query;
+  submit_proposal: (text) -> (variant {
+                                Err: text;
+                                Ok: StaticProposal;
+                              });
+  update_site: (text) -> ();
+  vote: (nat, bool) -> (variant {
+                          Err: text;
+                          Ok: record {
+                                int;
+                                int;
+                              };
+                        });
+  whoami: (text) -> (text) query;
+}
