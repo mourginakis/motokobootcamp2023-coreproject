@@ -4,6 +4,7 @@
   import mot from "../assets/mot.png"
   import { get } from "svelte/store"
   import { daoActor, principal } from "../stores"
+    import { dao } from "../../src/declarations/dao/index.js"
 
   let choosenproposal = ""
   let choosenvote = ""
@@ -37,6 +38,13 @@
     }
   }
 
+  async function gettokensowned() {
+    let result = await dao.get_tokens_owned();
+    return result
+  }
+
+  let get_tokens_owned_promise = gettokensowned();
+
   let promise = vote(voteid, choosenvote)
   let promise2 = get_proposal(id)
 
@@ -64,6 +72,7 @@
 <div class="votemain">
   {#if $principal}
     <img src={mot} class="bg" alt="logo" />
+    amount of tokens you own: {#await get_tokens_owned_promise then get_tokens_owned} {get_tokens_owned} {/await}
     {#if $proposaltoVote.proposalID === "null"}
       <h1 class="slogan">Please input a proposal ID!</h1>
       <input

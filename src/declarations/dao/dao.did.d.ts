@@ -12,6 +12,7 @@ export interface _SERVICE {
   'get_all_proposals' : ActorMethod<[], Array<[bigint, StaticProposal]>>,
   'get_cycles_balance' : ActorMethod<[], bigint>,
   'get_proposal' : ActorMethod<[bigint], [] | [StaticProposal]>,
+  'get_tokens_owned' : ActorMethod<[], bigint>,
   'submit_proposal' : ActorMethod<
     [string],
     { 'Ok' : StaticProposal } |

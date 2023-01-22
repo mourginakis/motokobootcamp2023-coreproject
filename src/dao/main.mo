@@ -89,7 +89,13 @@ actor {
         owner : Principal;
         subaccount : ?Subaccount;
     };
-    let bootcamp_token_canister : actor { icrc1_balance_of : (Account) -> async Nat } = actor ("dpzjy-fyaaa-aaaah-abz7a-cai"); 
+    let bootcamp_token_canister : actor { icrc1_balance_of : (Account) -> async Nat } = actor ("db3eq-6iaaa-aaaah-abz6a-cai"); 
+
+
+    public shared({caller}) func get_tokens_owned() : async Nat {
+        let tokens_owned = await bootcamp_token_canister.icrc1_balance_of({ owner = caller; subaccount = null; });
+        return tokens_owned;
+    };
 
 
     public shared({caller}) func vote(proposal_id : Nat, yes_or_no : Bool) : async {#Ok : (Int, Int); #Err : Text} {
@@ -108,7 +114,7 @@ actor {
             return #Err("You can't vote twice");
         };
 
-        Debug.print("you own tokens: " # debug_show(tokens_owned));
+        // Debug.print("you own tokens: " # debug_show(tokens_owned));
         let voting_power = tokens_owned;
 
         switch yes_or_no {

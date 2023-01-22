@@ -14,6 +14,7 @@ export const idlFactory = ({ IDL }) => {
       ),
     'get_cycles_balance' : IDL.Func([], [IDL.Nat], ['query']),
     'get_proposal' : IDL.Func([IDL.Nat], [IDL.Opt(StaticProposal)], ['query']),
+    'get_tokens_owned' : IDL.Func([], [IDL.Nat], []),
     'submit_proposal' : IDL.Func(
         [IDL.Text],
         [IDL.Variant({ 'Ok' : StaticProposal, 'Err' : IDL.Text })],

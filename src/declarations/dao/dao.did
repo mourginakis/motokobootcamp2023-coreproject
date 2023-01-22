@@ -13,6 +13,7 @@ service : {
                                 }) query;
   get_cycles_balance: () -> (nat) query;
   get_proposal: (nat) -> (opt StaticProposal) query;
+  get_tokens_owned: () -> (nat);
   submit_proposal: (text) -> (variant {
                                 Err: text;
                                 Ok: StaticProposal;
