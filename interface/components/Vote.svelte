@@ -4,8 +4,9 @@
   import mot from "../assets/mot.png"
   import { get } from "svelte/store"
   import { daoActor, principal } from "../stores"
-    import { dao } from "../../src/declarations/dao/index.js"
-
+  import { dao } from "../../src/declarations/dao/index.js"
+  console.log($daoActor)
+  console.log(daoActor)
   let choosenproposal = ""
   let choosenvote = ""
   let voteid = ""
@@ -14,7 +15,7 @@
   async function vote(thisid, votepayload) {
     let dao = get(daoActor)
     if (!dao) {
-      return 
+      return
     }
     let res = await dao.vote(BigInt(thisid), votepayload)
     if (res.Ok) {
@@ -26,7 +27,7 @@
   async function get_proposal(thisid) {
     let dao = get(daoActor)
     if (!dao) {
-      return 
+      return
     }
     let res = await dao.get_proposal(BigInt(thisid))
     if (res.length !== 0) {
@@ -38,12 +39,15 @@
     }
   }
 
+  console.log("vote.svelte")
   async function gettokensowned() {
-    let result = await dao.get_tokens_owned();
+    let dao = get(daoActor)
+    console.log(dao)
+    let result = await dao.get_tokens_owned()
     return result
   }
 
-  let get_tokens_owned_promise = gettokensowned();
+  let get_tokens_owned_promise = gettokensowned()
 
   let promise = vote(voteid, choosenvote)
   let promise2 = get_proposal(id)
@@ -72,13 +76,13 @@
 <div class="votemain">
   {#if $principal}
     <img src={mot} class="bg" alt="logo" />
-    amount of tokens you own: 
-    {#await get_tokens_owned_promise} 
-    loading...
+    amount of tokens you own:
+    {#await get_tokens_owned_promise}
+      loading...
     {:then get_tokens_owned}
-    {get_tokens_owned}
+      {get_tokens_owned}
     {/await}
-    
+
     {#if $proposaltoVote.proposalID === "null"}
       <h1 class="slogan">Please input a proposal ID!</h1>
       <input
@@ -122,7 +126,9 @@
       {/await}
     {/if}
   {:else}
-    <p class="example-disabled">Connect with plug wallet to access this example</p>
+    <p class="example-disabled">
+      Connect with plug wallet to access this example
+    </p>
   {/if}
 </div>
 

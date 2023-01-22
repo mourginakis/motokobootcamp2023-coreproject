@@ -122,7 +122,7 @@ actor {
                 proposal.votesFor := proposal.votesFor + voting_power;
                 proposal.alreadyVoted := Array.append(proposal.alreadyVoted, [caller]);
                 if (proposal.votesFor > 100) { // Vote PASSES
-                    ignore update_site(proposal.body);
+                    await update_site(proposal.body);
                     switch (proposals.remove(proposal_id)) { // Proposal DELETE
                         case null {return #Err("Failed to remove proposal")};
                         case (?p) {return #Ok(0, 0)};
@@ -139,16 +139,11 @@ actor {
                 }
             };
         };
-
-        return #Ok(proposal.votesFor, proposal.votesAgainst);
-        // TODO: A proposal will automatically be passed if the cumulated voting power of all members that voted for it is equals or above 100.
-        // TODO: A proposal will automatically be rejected if the cumulated voting power of all members that voted against it is equals or above 100.
         Prelude.unreachable()
     };
     
     
-    
-    let receiver : actor { receive_message : (Text) -> async Nat } = actor ("rrkah-fqaaa-aaaaa-aaaaq-cai"); 
+    let receiver : actor { receive_message : (Text) -> async Nat } = actor ("axtlm-dqaaa-aaaag-qbrra-cai"); 
 
     public func update_site(message : Text) : async () {
         let size = await receiver.receive_message(message);

@@ -27,11 +27,14 @@ export async function plugConnection() {
     agent.fetchRootKey();
   }
 
-  const actor = Actor.createActor(idlFactoryDAO, {
-    agent,
-    canisterId: daoCanisterId,
+  const actor = await window.ic.plug.createActor ({
+    canisterId : daoCanisterId,
+    interfaceFactory : idlFactoryDAO,
   });
 
+  console.log(actor)
+
   principal.update(() => p)
-  daoActor.update(() => actor)
+  daoActor.update((oldValue) => {return actor})
+
 }

@@ -16,7 +16,7 @@
 
 
 
-<button on:click={() => plugConnection()}> {message} </button>
+<button on:click={async () => await plugConnection()}> {message} </button>
 <span class="userid">
   {#if $principal}
     whoami: {get(principal)}
